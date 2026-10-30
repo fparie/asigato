@@ -4,6 +4,12 @@ WordPress theme for [asigatoflowers.com](https://asigatoflowers.com) — *a flor
 
 A redesign of the current site: an editorial one-page front page anchored on the pale logo green, with subtle, tasteful motion. This repository root **is** the theme.
 
+## 🌿 Live preview
+
+**[Open the theme preview in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2Ffparie%2Fasigato%2Fmain%2Fblueprint.json)** — a full WordPress instance runs in your browser, installs this theme from the `main` branch, activates it and seeds the six service pages. No setup, no account, nothing installed on your machine. (Give it ~30 seconds on first load; it is running PHP in a browser tab.)
+
+You land logged in as admin, so you can also open the dashboard and poke around (Pages, Appearance → Themes).
+
 ## Structure
 
 | File | Purpose |
@@ -15,8 +21,9 @@ A redesign of the current site: an editorial one-page front page anchored on the
 | `index.php`, `page.php`, `single.php` | Blog index, static pages, single post |
 | `js/site.js` | Nav shadow, scroll reveals, falling petals, marquee |
 | `concept/index.html` | The original standalone HTML concept (no build, no dependencies) |
+| `blueprint.json` | WordPress Playground blueprint used for the live preview |
 
-## Installation
+## Installation (on the real site)
 
 1. Download this repository as a ZIP and rename the folder to `asigato` (if needed).
 2. In WordPress: **Appearance → Themes → Add New → Upload Theme** → choose the ZIP.
@@ -42,7 +49,7 @@ The front page looks up your **existing pages by slug**: `huwelijken`, `ikebana`
 
 ## Next steps
 
-See the open issue in this repository for the full to-do list (logo, photography, screenshot, SEO…).
+See the [to-do issue](https://github.com/fparie/asigato/issues/1) for the full list (logo, photography, screenshot, SEO…).
 
 ## License
 

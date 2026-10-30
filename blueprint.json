@@ -1,0 +1,30 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Asigato Flowers — theme preview",
+    "description": "Live preview of the Asigato Flowers WordPress theme from github.com/fparie/asigato"
+  },
+  "preferredName": "Asigato Flowers preview",
+  "landingPage": "/",
+  "login": true,
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "git:directory",
+        "url": "https://github.com/fparie/asigato",
+        "ref": "main"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php\nrequire '/wordpress/wp-load.php';\n\n$pages = array(\n  array( 'huwelijken', 'Huwelijken', 'Jullie liefde vertaald in bloemen. Bruidsboeketten, corsages, tafeldecoraties en een sfeervolle aankleding van de trouwlocatie.' ),\n  array( 'ikebana', 'Ikebana', 'Japanse bloemschikkunst volgens de Sōgetsu-school: vrijheid, creativiteit en balans — met elk plantaardig materiaal, altijd en overal.' ),\n  array( 'workshops', 'Workshops', 'Creatief, gezellig en volledig verzorgd — op mijn locatie of bij jullie. Perfect voor vrijgezellenfeesten, teambuildings of een dag met vriendinnen.' ),\n  array( 'abonnementen', 'Abonnementen', 'Verse bloemen, met zorg geleverd. Kies jouw stijl en frequentie — unieke seizoensboeketten die jouw ruimte tot leven brengen.' ),\n  array( 'commercieel', 'Freelancing', 'Professionele ondersteuning voor bloemisten, weddingplanners en bedrijven die waarde hechten aan stijl en verfijnde bloemkunst.' ),\n  array( 'grafstukken', 'Grafstukken', 'Een waardig en persoonlijk laatste eerbetoon, met rust en aandacht samengesteld — passend bij wie uw dierbare was.' ),\n);\n\nforeach ( $pages as $p ) {\n  if ( get_page_by_path( $p[0] ) ) {\n    continue;\n  }\n  wp_insert_post( array(\n    'post_type'    => 'page',\n    'post_status'  => 'publish',\n    'post_title'   => $p[1],\n    'post_name'    => $p[0],\n    'post_excerpt' => $p[2],\n    'post_content' => '<p>' . $p[2] . '</p><p>Dit is een voorbeeldpagina uit de Playground-preview. Op de echte site staat hier de originele tekst uit WordPress.</p>',\n  ) );\n}\n\nupdate_option( 'show_on_front', 'page' );\n$home = get_page_by_path( 'home' );\nif ( ! $home ) {\n  $home_id = wp_insert_post( array(\n    'post_type'   => 'page',\n    'post_status' => 'publish',\n    'post_title'  => 'Home',\n    'post_name'   => 'home',\n    'post_content' => '<!-- front-page.php rendert de homepage -->',\n  ) );\n  update_option( 'page_on_front', $home_id );\n} else {\n  update_option( 'page_on_front', $home->ID );\n}\n"
+    }
+  ]
+}
